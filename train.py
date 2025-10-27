@@ -97,8 +97,7 @@ def train(hyp, opt, device, callbacks):  # hyp is path/to/hyp.yaml or hyp dictio
     nc = 1 if single_cls else int(data_dict['nc'])  # number of classes
     names = {0: 'item'} if single_cls and len(data_dict['names']) != 1 else data_dict['names']  # class names
     #is_coco = isinstance(val_path, str) and val_path.endswith('coco/val2017.txt')  # COCO dataset
-    # is_coco = isinstance(val_path, str) and val_path.endswith('val2017.txt')  # COCO dataset
-    is_coco = True
+    is_coco = isinstance(val_path, str) and ('coco' in val_path or val_path.endswith('val2017.txt'))  # COCO dataset
 
     # Model
     check_suffix(weights, '.pt')  # check weights
